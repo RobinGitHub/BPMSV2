@@ -5,7 +5,7 @@ if exists (select 1
             and   type = 'U')
    drop table TableId
 CREATE TABLE [dbo].[TableId](
-	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[tablename] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
 	[currentid] [bigint] NULL,
 	[updatetime] [datetime] NULL,
