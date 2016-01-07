@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMS.Common", "BPMS.Common\BPMS.Common.csproj", "{20A1DDCC-5391-4424-A08C-9DD3BBA4587B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMS.Model", "BPMS.Model\BPMS.Model.csproj", "{478C5572-FE31-4239-8516-5758E074818A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{20A1DDCC-5391-4424-A08C-9DD3BBA4587B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20A1DDCC-5391-4424-A08C-9DD3BBA4587B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20A1DDCC-5391-4424-A08C-9DD3BBA4587B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478C5572-FE31-4239-8516-5758E074818A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478C5572-FE31-4239-8516-5758E074818A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478C5572-FE31-4239-8516-5758E074818A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478C5572-FE31-4239-8516-5758E074818A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
