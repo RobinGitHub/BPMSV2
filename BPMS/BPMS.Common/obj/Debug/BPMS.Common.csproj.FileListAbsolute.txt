@@ -1,0 +1,12 @@
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\BPMS.Common.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\BPMS.Common.pdb
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\obj\Debug\BPMS.Common.dll
+C:\Users\Sky\Documents\GitHub\BPMSV2\BPMS\BPMS.Common\obj\Debug\BPMS.Common.pdb

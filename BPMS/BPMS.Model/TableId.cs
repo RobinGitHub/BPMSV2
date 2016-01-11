@@ -16,7 +16,7 @@ namespace BPMS.Model
     {
         public int id { get; set; }
         public string tablename { get; set; }
-        public Nullable<long> currentid { get; set; }
+        public Nullable<int> currentid { get; set; }
         public Nullable<System.DateTime> updatetime { get; set; }
     }
 }

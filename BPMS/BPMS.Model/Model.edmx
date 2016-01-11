@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BPMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BPMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DataDictionary">
           <Key>
             <PropertyRef Name="ID" />
@@ -328,7 +328,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tablename" Type="varchar" MaxLength="50" />
-          <Property Name="currentid" Type="bigint" />
+          <Property Name="currentid" Type="int" />
           <Property Name="updatetime" Type="datetime" />
         </EntityType>
         <EntityType Name="UserInfo">
@@ -436,8 +436,7 @@
           <EntitySet Name="UserPurview" EntityType="Self.UserPurview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BPMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -758,15 +757,6 @@
           <Property Name="ModifyUserId" Type="Int32" Nullable="false" />
           <Property Name="ModifyUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="TableId">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tablename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="currentid" Type="Int64" />
-          <Property Name="updatetime" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -855,14 +845,10 @@
           <EntitySet Name="SystemExceptionLog" EntityType="Self.SystemExceptionLog" />
           <EntitySet Name="SystemInfo" EntityType="Self.SystemInfo" />
           <EntitySet Name="TableColumns" EntityType="Self.TableColumns" />
-          <EntitySet Name="TableId" EntityType="Self.TableId" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
           <EntitySet Name="UserOrganize" EntityType="Self.UserOrganize" />
           <EntitySet Name="UserPurview" EntityType="Self.UserPurview" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" />
-          <FunctionImport Name="GetNewID" ReturnType="Collection(Int64)">
-            <Parameter Name="TableName" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_GetUserMenu" ReturnType="Collection(BPMSModel.SP_GetUserMenu_Result)">
             <Parameter Name="systemId" Mode="In" Type="Int32" />
             <Parameter Name="userId" Mode="In" Type="Int32" />
@@ -871,6 +857,10 @@
             <Parameter Name="systemId" Mode="In" Type="Int32" />
             <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetNewID" ReturnType="Collection(Int32)">
+          <Parameter Name="TableName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="TableId" EntityType="BPMSModel.TableId" />
         </EntityContainer>
         <ComplexType Name="SP_GetUserMenu_Result">
           <Property Type="String" Name="systemcode" Nullable="false" MaxLength="50" />
@@ -911,6 +901,15 @@
           <Property Type="Int32" Name="PurviewType" Nullable="false" />
           <Property Type="String" Name="Remark" Nullable="true" MaxLength="500" />
         </ComplexType>
+        <EntityType Name="TableId">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tablename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="currentid" Type="Int32" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1247,16 +1246,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TableId">
-            <EntityTypeMapping TypeName="BPMSModel.TableId">
-              <MappingFragment StoreEntitySet="TableId">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="tablename" ColumnName="tablename" />
-                <ScalarProperty Name="currentid" ColumnName="currentid" />
-                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserInfo">
             <EntityTypeMapping TypeName="BPMSModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
@@ -1335,7 +1324,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetNewID" FunctionName="BPMSModel.Store.GetNewID" />
           <FunctionImportMapping FunctionImportName="SP_GetUserMenu" FunctionName="BPMSModel.Store.SP_GetUserMenu">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BPMSModel.SP_GetUserMenu_Result">
@@ -1383,6 +1371,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNewID" FunctionName="BPMSModel.Store.GetNewID" />
+          <EntitySetMapping Name="TableId">
+            <EntityTypeMapping TypeName="BPMSModel.TableId">
+              <MappingFragment StoreEntitySet="TableId">
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="currentid" ColumnName="currentid" />
+                <ScalarProperty Name="tablename" ColumnName="tablename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

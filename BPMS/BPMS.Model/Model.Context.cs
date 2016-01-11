@@ -40,20 +40,11 @@ namespace BPMS.Model
         public virtual DbSet<SystemExceptionLog> SystemExceptionLog { get; set; }
         public virtual DbSet<SystemInfo> SystemInfo { get; set; }
         public virtual DbSet<TableColumns> TableColumns { get; set; }
-        public virtual DbSet<TableId> TableId { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
         public virtual DbSet<UserOrganize> UserOrganize { get; set; }
         public virtual DbSet<UserPurview> UserPurview { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
-    
-        public virtual ObjectResult<Nullable<long>> GetNewID(string tableName)
-        {
-            var tableNameParameter = tableName != null ?
-                new ObjectParameter("TableName", tableName) :
-                new ObjectParameter("TableName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("GetNewID", tableNameParameter);
-        }
+        public virtual DbSet<TableId> TableId { get; set; }
     
         public virtual ObjectResult<SP_GetUserMenu_Result> SP_GetUserMenu(Nullable<int> systemId, Nullable<int> userId)
         {
@@ -79,6 +70,15 @@ namespace BPMS.Model
                 new ObjectParameter("userId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetUserPurview_Result>("SP_GetUserPurview", systemIdParameter, userIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetNewID(string tableName)
+        {
+            var tableNameParameter = tableName != null ?
+                new ObjectParameter("TableName", tableName) :
+                new ObjectParameter("TableName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewID", tableNameParameter);
         }
     }
 }

@@ -7,7 +7,7 @@ if exists (select 1
 CREATE TABLE [dbo].[TableId](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[tablename] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
-	[currentid] [bigint] NULL,
+	[currentid] [int] NULL,
 	[updatetime] [datetime] NULL,
  CONSTRAINT [PK_TB_TABLEID] PRIMARY KEY CLUSTERED 
 (
@@ -51,10 +51,10 @@ begin
 			exec sp_executesql @sql,N'@value varchar(100) output',@value output
 			if exists(select null from TableId where tablename=@tablename)
 			begin
-				update TableId set currentid=cast(@value as bigint),updatetime=getdate() where tablename=@tablename
+				update TableId set currentid=cast(@value as int),updatetime=getdate() where tablename=@tablename
 			end
 			else begin
-				insert TableId(tablename,currentid,updatetime) values(@tablename,cast(@value as bigint),getdate())
+				insert TableId(tablename,currentid,updatetime) values(@tablename,cast(@value as int),getdate())
 			end
 		end
 	end
@@ -73,7 +73,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	SET TRANSACTION ISOLATION LEVEL serializable
-	DECLARE @ReturnID BIGINT
+	DECLARE @ReturnID INT
 	
 	BEGIN TRAN
 
